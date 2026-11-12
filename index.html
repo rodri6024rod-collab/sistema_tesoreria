@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sistema de Tesorería | IESTP Utcubamba</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body class="login-page">
+  <main class="login-shell">
+    <section class="login-brand">
+      <div class="brand-mark">IESTP</div>
+      <p class="eyebrow">INSTITUTO DE EDUCACIÓN SUPERIOR</p>
+      <h1>UTCUBAMBA</h1>
+      <p>Sistema Integral de Tesorería</p>
+      <div class="login-decoration"><span>INGRESOS</span><span>EGRESOS</span><span>CONTROL</span></div>
+    </section>
+    <section class="login-card">
+      <h2>Bienvenido</h2><p class="muted">Ingresa con tus credenciales institucionales.</p>
+      <form id="loginForm">
+        <label>Usuario<input id="username" autocomplete="username" required placeholder="Ingresa tu usuario"></label>
+        <label>Contraseña<input id="password" type="password" autocomplete="current-password" required placeholder="Ingresa tu contraseña"></label>
+        <button class="btn primary full" type="submit">Iniciar sesión</button>
+        <p id="loginError" class="error" role="alert"></p>
+      </form>
+      <div class="demo-note"><strong>Modo demostración</strong><br>Administrador: <code>admin / 123</code><br>Tesorero: <code>tesorero / 321</code></div>
+      <p class="tiny">Versión estática para GitHub Pages. Los datos se guardan únicamente en este navegador.</p>
+    </section>
+  </main>
+  <script src="assets/app.js"></script>
+</body></html>

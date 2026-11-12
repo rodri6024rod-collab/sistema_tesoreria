@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Panel de Tesorería | IESTP Utcubamba</title><link rel="stylesheet" href="assets/styles.css"></head>
+<body>
+<div class="app-layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="side-brand"><div class="brand-mark small">IESTP</div><div><b>UTCUBAMBA</b><small>TESORERÍA</small></div></div>
+    <div class="user-chip"><span class="avatar" id="avatar">A</span><div><b id="userName">Administrador</b><small id="userRole">Administrador</small></div></div>
+    <nav>
+      <button class="nav-link active" data-view="dashboard">▦ <span>Panel principal</span></button>
+      <button class="nav-link" data-view="movements">⇄ <span>Movimientos</span></button>
+      <button class="nav-link" data-view="vouchers">▤ <span>Comprobantes</span></button>
+      <button class="nav-link admin-only" data-view="users">♙ <span>Usuarios</span></button>
+      <button class="nav-link admin-only" data-view="audit">◷ <span>Auditoría</span></button>
+    </nav>
+    <button class="logout" id="logoutBtn">↪ Cerrar sesión</button>
+  </aside>
+  <main class="main-content">
+    <header class="topbar"><button class="menu-toggle" id="menuToggle">☰</button><div><span class="eyebrow">IESTP UTCUBAMBA</span><h1 id="pageTitle">Panel principal</h1></div><div class="top-date" id="today"></div></header>
+    <section id="view-dashboard" class="view active">
+      <div class="welcome-row"><div><h2>Resumen financiero</h2><p class="muted">Control de ingresos, egresos y saldo institucional.</p></div><button class="btn primary" data-action="new-movement">＋ Nuevo movimiento</button></div>
+      <div class="stats-grid">
+        <article class="stat-card"><span class="stat-icon green">↙</span><div><p>Ingresos confirmados</p><h2 id="totalIncome">S/ 0.00</h2></div></article>
+        <article class="stat-card"><span class="stat-icon red">↗</span><div><p>Egresos confirmados</p><h2 id="totalExpense">S/ 0.00</h2></div></article>
+        <article class="stat-card"><span class="stat-icon blue">＝</span><div><p>Saldo disponible</p><h2 id="balance">S/ 0.00</h2></div></article>
+        <article class="stat-card"><span class="stat-icon gold">▤</span><div><p>Movimientos registrados</p><h2 id="movementCount">0</h2></div></article>
+      </div>
+      <div class="panel"><div class="panel-heading"><div><h3>Movimientos recientes</h3><p class="muted">Últimas operaciones registradas</p></div><button class="btn outline" data-view-go="movements">Ver todos</button></div><div class="table-wrap"><table><thead><tr><th>Fecha</th><th>Concepto</th><th>Tipo</th><th>Monto</th><th>Estado</th></tr></thead><tbody id="recentRows"></tbody></table></div></div>
+      <div class="notice"><b>Importante:</b> Solo los movimientos en estado CONFIRMADO se consideran en los totales. Los pendientes y anulados no modifican el saldo.</div>
+    </section>
+    <section id="view-movements" class="view">
+      <div class="section-heading"><div><h2>Movimientos</h2><p class="muted">Registra, confirma y consulta ingresos y egresos.</p></div><button class="btn primary" data-action="new-movement">＋ Registrar movimiento</button></div>
+      <div class="filters"><input id="movementSearch" placeholder="Buscar por concepto o referencia"><select id="typeFilter"><option value="">Todos los tipos</option><option>INGRESO</option><option>EGRESO</option></select><select id="statusFilter"><option value="">Todos los estados</option><option>PENDIENTE</option><option>CONFIRMADO</option><option>ANULADO</option></select><button class="btn outline" id="exportMovements">Exportar CSV</button></div>
+      <div class="panel table-wrap"><table><thead><tr><th>Fecha</th><th>Concepto</th><th>Referencia</th><th>Tipo</th><th>Monto</th><th>Estado</th><th>Acciones</th></tr></thead><tbody id="movementRows"></tbody></table></div>
+    </section>
+    <section id="view-vouchers" class="view">
+      <div class="section-heading"><div><h2>Comprobantes</h2><p class="muted">Documentos vinculados a los movimientos.</p></div><button class="btn primary" data-action="new-voucher">＋ Registrar comprobante</button></div>
+      <div class="filters"><input id="voucherSearch" placeholder="Buscar número, tipo o concepto"></div>
+      <div class="panel table-wrap"><table><thead><tr><th>Fecha</th><th>Documento</th><th>Número</th><th>Movimiento</th><th>Archivo</th><th>Registrado por</th></tr></thead><tbody id="voucherRows"></tbody></table></div>
+    </section>
+    <section id="view-users" class="view admin-only-view">
+      <div class="section-heading"><div><h2>Usuarios</h2><p class="muted">Administración de accesos del sistema.</p></div><button class="btn primary" data-action="new-user">＋ Nuevo usuario</button></div>
+      <div class="panel table-wrap"><table><thead><tr><th>Nombre</th><th>Usuario</th><th>Rol</th><th>Estado</th></tr></thead><tbody id="userRows"></tbody></table></div>
+    </section>
+    <section id="view-audit" class="view admin-only-view">
+      <div class="section-heading"><div><h2>Registro de auditoría</h2><p class="muted">Historial de acciones realizadas en esta demostración.</p></div></div>
+      <div class="panel table-wrap"><table><thead><tr><th>Fecha y hora</th><th>Usuario</th><th>Acción</th><th>Detalle</th></tr></thead><tbody id="auditRows"></tbody></table></div>
+    </section>
+    <footer>IESTP Utcubamba · Sistema Integral de Tesorería · Versión estática de demostración</footer>
+  </main>
+</div>
+<div class="modal-backdrop" id="modalBackdrop"><div class="modal"><div class="modal-head"><h3 id="modalTitle"></h3><button id="closeModal" class="icon-btn">×</button></div><div id="modalBody"></div></div></div>
+<div id="toast" class="toast"></div>
+<script src="assets/app.js"></script></body></html>
